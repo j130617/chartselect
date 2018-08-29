@@ -127,18 +127,19 @@ function update(year) {
         //update
         new_bars.merge(bars)
             //.transition(t)
-            .attr('x', function(d) {
-                return x(d.month);
-            })
-            .attr('y', function(d) {
-                return y(d.value);
-            })
-            .attr('height', function(d) {
-                return height - y(d.value);
-            })
-            .attr('fill', function(d) {
-                return colour_scale(d.value);
-            });
+            .attr('x', function(d) {return x(d.month);})
+            .attr('y', function(d) {return y(d.value);})
+            .attr('height', function(d) {return height - y(d.value);})
+            //.attr('fill', function(d) {return colour_scale(d.value);
+      	    .on("mousemove", function(d){
+            	tooltip
+              	.style("left", d3.event.pageX + 10 + "px")
+              	.style("top", d3.event.pageY - 25 + "px")
+              	.style("display", "inline-block")
+              	.html((d.month) + "<br>" + "€ " + (d.value) + " miljard");
+        })
+    		.on("mouseout", function(d){ tooltip.style("display", "none");});			      
+				      			      
 
         svg.select('.x.axis')
             //.transition(t)
