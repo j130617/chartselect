@@ -108,7 +108,7 @@ var svg = d3.select("body").append("svg")
 function update(year) {
     d3.csv('monthly_data_' + year + '.csv', function(data) {
 
-        var t = d3.transition();
+        //var t = d3.transition();
             //.duration(1500);
         
 	    // format the data
@@ -143,7 +143,7 @@ function update(year) {
 
         //update
         new_bars.merge(bars)
-            .transition(t)
+            //.transition(t)
             .attr('x', function(d) {return x(d.month);})
             .attr('y', function(d) {return y(d.value);})
             .attr('height', function(d) {return height - y(d.value);})
@@ -159,11 +159,11 @@ function update(year) {
 				      			      
 
         svg.select('.x.axis')
-            .transition(t)
+            //.transition(t)
             .call(x_axis);
 
         svg.select('.y.axis')
-            .transition(t)
+            //.transition(t)
             .call(y_axis);
 
     });
