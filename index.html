@@ -126,7 +126,7 @@ function update(year) {
 
         //update
         new_bars.merge(bars)
-            //.transition(t)
+            .transition(t)
             .attr('x', function(d) {return x(d.month);})
             .attr('y', function(d) {return y(d.value);})
             .attr('height', function(d) {return height - y(d.value);})
