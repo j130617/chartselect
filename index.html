@@ -160,11 +160,11 @@ function update(year) {
     		.on("mouseout", function(d){ tooltip.style("display", "none");});			      
 				      			      
 
-        svg.selectAll('g.x.axis')
+        svg.select('.x.axis')
             //.transition(t)
             .call(x_axis);
 
-        svg.selectAll('g.y.axis')
+        svg.select('.y.axis')
             //.transition(t)
             .call(y_axis);
 
