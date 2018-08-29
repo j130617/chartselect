@@ -81,12 +81,12 @@ var svg = d3.select("body").append("svg")
       //.call(d3.axisLeft(y));		
 		
 
-var y_axis = d3.axisLeft(y_scale);
-var x_axis = d3.axisBottom(x_scale);
+var y_axis = d3.axisLeft(y);
+var x_axis = d3.axisBottom(x);
 
 
-//var colour_scale = d3.scaleQuantile()
-    //.range(["#ffffe5", "#f7fcb9", "#d9f0a3", "#addd8e", "#78c679", "#41ab5d", "#238443", "#006837", "#004529"]);
+var colour_scale = d3.scaleQuantile()
+    .range(["#ffffe5", "#f7fcb9", "#d9f0a3", "#addd8e", "#78c679", "#41ab5d", "#238443", "#006837", "#004529"]);
 
 
 
@@ -99,13 +99,13 @@ function update(year) {
         var months = csv_data.map(function(d) {
             return d.month;
         });
-        x_scale.domain(months);
+        x.domain(months);
 
         var max_value = d3.max(csv_data, function(d) {
             return d.value;
         });
-        y_scale.domain([0, max_value]);
-        //colour_scale.domain([0, max_value]);
+        y.domain([0, max_value]);
+        colour_scale.domain([0, max_value]);
 
         var bars = svg.selectAll('.bar')
             .data(csv_data);
@@ -131,10 +131,10 @@ function update(year) {
                 return x_scale(d.month);
             })
             .attr('y', function(d) {
-                return y_scale(d.value);
+                return y(d.value);
             })
             .attr('height', function(d) {
-                return height - y_scale(d.value);
+                return height - y(d.value);
             })
             .attr('fill', function(d) {
                 return colour_scale(d.value);
@@ -142,11 +142,11 @@ function update(year) {
 
         svg.select('.x.axis')
             //.transition(t)
-            .call(d3.axisBottom(x));
+            .call(x_axis);
 
         svg.select('.y.axis')
             //.transition(t)
-            .call(d3.axisLeft(y));
+            .call(y_axis);
 
     });
 }
