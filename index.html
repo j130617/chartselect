@@ -91,24 +91,23 @@ var colour_scale = d3.scaleQuantile()
 
 
 function update(year) {
-    d3.csv('monthly_data_' + year + '.csv', function(csv_data) {
+    d3.csv('monthly_data_' + year + '.csv', function(data) {
 
         //var t = d3.transition()
             //.duration(1500);
-
-        var months = csv_data.map(function(d) {
-            return d.month;
-        });
-        x.domain(months);
-
-        var max_value = d3.max(csv_data, function(d) {
-            return d.value;
-        });
-        y.domain([0, max_value]);
+          // format the data
+  	data.forEach(function(d) {
+    	d.value = +d.value;
+  	});
+	    
+	x.domain(data.map(function(d) { return d.months; }));
+  	y.domain([0, d3.max(data, function(d) { return d.value; })]);
+	    
+	
         colour_scale.domain([0, max_value]);
 
         var bars = svg.selectAll('.bar')
-            .data(csv_data);
+            .data(data);
 
         //exit
         bars
