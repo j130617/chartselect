@@ -72,30 +72,29 @@ var svg = d3.select("body").append("svg")
 	// add the x Axis
   svg.append("g")
       .attr("class", "axis")
-      .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x));
+      .attr("transform", "translate(0," + height + ")");
+      //.call(d3.axisBottom(x));
 
 	// add the y Axis
   svg.append("g")
-      .attr("class", "axis")
-      .call(d3.axisLeft(y));		
+      .attr("class", "axis");
+      //.call(d3.axisLeft(y));		
 		
-
 
 var y_axis = d3.axisLeft(y_scale);
 var x_axis = d3.axisBottom(x_scale);
 
 
-var colour_scale = d3.scaleQuantile()
-    .range(["#ffffe5", "#f7fcb9", "#d9f0a3", "#addd8e", "#78c679", "#41ab5d", "#238443", "#006837", "#004529"]);
+//var colour_scale = d3.scaleQuantile()
+    //.range(["#ffffe5", "#f7fcb9", "#d9f0a3", "#addd8e", "#78c679", "#41ab5d", "#238443", "#006837", "#004529"]);
 
 
 
 function update(year) {
     d3.csv('monthly_data_' + year + '.csv', function(csv_data) {
 
-        var t = d3.transition()
-            .duration(1500);
+        //var t = d3.transition()
+            //.duration(1500);
 
         var months = csv_data.map(function(d) {
             return d.month;
@@ -106,7 +105,7 @@ function update(year) {
             return d.value;
         });
         y_scale.domain([0, max_value]);
-        colour_scale.domain([0, max_value]);
+        //colour_scale.domain([0, max_value]);
 
         var bars = svg.selectAll('.bar')
             .data(csv_data);
@@ -127,7 +126,7 @@ function update(year) {
 
         //update
         new_bars.merge(bars)
-            .transition(t)
+            //.transition(t)
             .attr('x', function(d) {
                 return x_scale(d.month);
             })
@@ -142,12 +141,12 @@ function update(year) {
             });
 
         svg.select('.x.axis')
-            .transition(t)
-            .call(x_axis);
+            //.transition(t)
+            .call(d3.axisBottom(x));
 
         svg.select('.y.axis')
-            .transition(t)
-            .call(y_axis);
+            //.transition(t)
+            .call(d3.axisLeft(y));
 
     });
 }
