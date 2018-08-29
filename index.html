@@ -122,13 +122,13 @@ function update(year) {
             .attr('class', 'bar')
             .attr('height', 0)
             .attr('y', height)
-            .attr('width', x_scale.bandwidth());
+            .attr('width', x.bandwidth());
 
         //update
         new_bars.merge(bars)
             //.transition(t)
             .attr('x', function(d) {
-                return x_scale(d.month);
+                return x(d.month);
             })
             .attr('y', function(d) {
                 return y(d.value);
