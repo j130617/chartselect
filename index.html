@@ -77,13 +77,13 @@ var svg = d3.select("body").append("svg")
 	// add the x Axis
   svg.append("g")
       .attr("class", "axis")
-      .attr("transform", "translate(0," + height + ")");
-      //.call(x_axis);
+      .attr("transform", "translate(0," + height + ")") //;
+      .call(x_axis);
 
 	// add the y Axis
   svg.append("g")
-      .attr("class", "axis");
-      //.call(y_axis);		
+      .attr("class", "axis") //;
+      .call(y_axis);		
 		
 
 //var colour_scale = d3.scaleQuantile()
