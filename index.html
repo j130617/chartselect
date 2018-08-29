@@ -59,7 +59,9 @@ var y = d3.scaleLinear()
           .range([height, 0]);
 
 
-
+var y_axis = d3.axisLeft(y);
+var x_axis = d3.axisBottom(x);
+		
 // append the svg object to the body of the page
 // append a 'group' element to 'svg'
 // moves the 'group' element to the top left margin
@@ -89,7 +91,7 @@ var svg = d3.select("body").append("svg")
 function update(year) {
     d3.csv('monthly_data_' + year + '.csv', function(data) {
 
-        //var t = d3.transition()
+        var t = d3.transition()
             //.duration(1500);
         
 	    // format the data
@@ -100,8 +102,6 @@ function update(year) {
 	x.domain(data.map(function(d) { return d.month; }));
   	y.domain([0, d3.max(data, function(d) { return d.value; })]);
 	
-	var y_axis = d3.axisLeft(y);
-	var x_axis = d3.axisBottom(x);
 	    
 	// Define the div for the tooltip
 	var tooltip = d3.select("body").append("div").attr("class", "toolTip");
@@ -142,11 +142,11 @@ function update(year) {
 				      			      
 
         svg.select('.x.axis')
-            //.transition(t)
+            .transition(t)
             .call(x_axis);
 
         svg.select('.y.axis')
-            //.transition(t)
+            .transition(t)
             .call(y_axis);
 
     });
