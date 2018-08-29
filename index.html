@@ -87,7 +87,7 @@ var svg = d3.select("body").append("svg")
 //var colour_scale = d3.scaleQuantile()
     //.range(["#ffffe5", "#f7fcb9", "#d9f0a3", "#addd8e", "#78c679", "#41ab5d", "#238443", "#006837", "#004529"]);
 
- 	// Add a small label for the graph name.
+ /*	// Add a small label for the graph name.
   svg.append("text")
       .attr("transform", "rotate(-90)")
       .attr("y", - 35)
@@ -103,7 +103,7 @@ var svg = d3.select("body").append("svg")
       .attr("class", "legend")    // style the legend
       .style("text-anchor", "middle")
       .style("font-size", 11)
-      .text("Bron: Eigen berekening");
+      .text("Bron: Eigen berekening"); */
 		
 function update(year) {
     d3.csv('monthly_data_' + year + '.csv', function(data) {
