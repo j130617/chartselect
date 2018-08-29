@@ -103,7 +103,9 @@ function update(year) {
 	    
 	x.domain(data.map(function(d) { return d.month; }));
   	y.domain([0, d3.max(data, function(d) { return d.value; })]);
-	    
+	
+	// Define the div for the tooltip
+	var tooltip = d3.select("body").append("div").attr("class", "toolTip");
 	
         //colour_scale.domain([0, max_value]);
 
