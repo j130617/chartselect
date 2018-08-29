@@ -75,20 +75,16 @@ var svg = d3.select("body").append("svg")
   svg.append("g")
       .attr("class", "axis")
       .attr("transform", "translate(0," + height + ")");
-      .call(x_axis);
+      //.call(x_axis);
 
 	// add the y Axis
   svg.append("g")
       .attr("class", "axis");
-      .call(y_axis);		
+      //.call(y_axis);		
 		
 
-
-
-
-var colour_scale = d3.scaleQuantile()
-    .range(["#ffffe5", "#f7fcb9", "#d9f0a3", "#addd8e", "#78c679", "#41ab5d", "#238443", "#006837", "#004529"]);
-
+//var colour_scale = d3.scaleQuantile()
+    //.range(["#ffffe5", "#f7fcb9", "#d9f0a3", "#addd8e", "#78c679", "#41ab5d", "#238443", "#006837", "#004529"]);
 
 
 function update(year) {
@@ -120,8 +116,7 @@ function update(year) {
 
         //enter
         var new_bars = bars
-            .enter()
-            .append('rect')
+            .enter().append('rect')
             .attr('class', 'bar')
             .attr('height', 0)
             .attr('y', height)
