@@ -2,11 +2,8 @@
 <meta charset="utf-8">
 
 <style> /* set the CSS */
-html, body, #vis {
-            height: 100%;
-            margin: 0;
-        }
-	/* body { font: 12px Arial;} */
+
+body { font: 12px Arial;} 
 
 .bar { fill: steelblue; }
 
@@ -51,34 +48,10 @@ html, body, #vis {
 <script src="//d3js.org/d3.v4.min.js"></script>
 
 	<script>
-
-var width = document.getElementById('vis')
-    .clientWidth;
-var height = document.getElementById('vis')
-    .clientHeight;
-
-var margin = {
-    top: 10,
-    bottom: 70,
-    left: 70,
-    right: 20
-};
-
-var svg = d3.select('#vis')
-    .append('svg')
-    .attr('width', width)
-    .attr('height', height)
-    .append('g')
-    .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
-
-width = width - margin.left - margin.right;
-height = height - margin.top - margin.bottom;
-	
-		
-/* // set the dimensions and margins of the graph  
+// set the dimensions and margins of the graph  
 var margin = {top: 40, right: 50, bottom: 50, left: 65},
     width = 700 - margin.left - margin.right,
-    height = 425 - margin.top - margin.bottom; */
+    height = 425 - margin.top - margin.bottom;
 
 // set the ranges
 var x = d3.scaleBand()
@@ -91,7 +64,7 @@ var y = d3.scaleLinear()
 var y_axis = d3.axisLeft(y);
 var x_axis = d3.axisBottom(x);
 		
-/* // append the svg object to the body of the page
+// append the svg object to the body of the page
 // append a 'group' element to 'svg'
 // moves the 'group' element to the top left margin
 var svg = d3.select("body").append("svg")
@@ -99,7 +72,7 @@ var svg = d3.select("body").append("svg")
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform",
-          "translate(" + margin.left + "," + margin.top + ")");  */
+          "translate(" + margin.left + "," + margin.top + ")");
 		
 	// add the x Axis
   svg.append("g")
