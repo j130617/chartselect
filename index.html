@@ -91,7 +91,7 @@ var svg = d3.select("body").append("svg")
 function update(year) {
     d3.csv('monthly_data_' + year + '.csv', function(data) {
 
-        var t = d3.transition()
+        var t = d3.transition();
             //.duration(1500);
         
 	    // format the data
