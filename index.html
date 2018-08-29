@@ -49,7 +49,7 @@ body { font: 12px Arial;}
 
 	<script>
 // set the dimensions and margins of the graph  
-var margin = {top: 40, right: 50, bottom: 50, left: 65},
+var margin = {top: 40, right: 75, bottom: 50, left: 45},
     width = 700 - margin.left - margin.right,
     height = 425 - margin.top - margin.bottom;
 
@@ -97,7 +97,7 @@ var svg = d3.select("body").append("svg")
 
 
   svg.append("text")
-      .attr("x", 0)  // space legend
+      .attr("x", 20)  // space legend
       .attr("y", height + 40)
       .attr("class", "legend")    // style the legend
       .style("text-anchor", "middle")
