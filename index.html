@@ -63,7 +63,9 @@ var y = d3.scaleLinear()
 
 var y_axis = d3.axisLeft(y);
 var x_axis = d3.axisBottom(x);
-		
+
+// Define the div for the tooltip
+var tooltip = d3.select("body").append("div").attr("class", "toolTip");		
 		
 // append the svg object to the body of the page
 // append a 'group' element to 'svg'
@@ -116,11 +118,6 @@ function update(year) {
 	x.domain(data.map(function(d) { return d.month; }));
   	y.domain([0, d3.max(data, function(d) { return d.value; })]);
 	
-	    
-	// Define the div for the tooltip
-	var tooltip = d3.select("body").append("div").attr("class", "toolTip");
-	
- 
         var bars = svg.selectAll('.bar')
             .data(data);
 
