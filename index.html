@@ -96,15 +96,16 @@ function update(year) {
         //var t = d3.transition()
             //.duration(1500);
           // format the data
-  	//data.forEach(function(d) {
-    	//d.value = +d.value;
-  	//});
+  	
+	data.forEach(function(d) {
+    	d.value = +d.value;
+  	});
 	    
-	x.domain(data.map(function(d) { return d.months; }));
+	x.domain(data.map(function(d) { return d.month; }));
   	y.domain([0, d3.max(data, function(d) { return d.value; })]);
 	    
 	
-        colour_scale.domain([0, max_value]);
+        //colour_scale.domain([0, max_value]);
 
         var bars = svg.selectAll('.bar')
             .data(data);
