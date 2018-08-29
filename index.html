@@ -61,8 +61,11 @@ var y = d3.scaleLinear()
           .range([height, 0]);
 
 
-var y_axis = d3.axisLeft(y);
-var x_axis = d3.axisBottom(x);
+//var y_axis = d3.axisLeft(y);
+//var x_axis = d3.axisBottom(x);
+	var x_axis = d3.svg.axis().scale(x).orient("bottom");
+        var y_axis = d3.svg.axis().scale(y).orient("left");	
+		
 		
 // append the svg object to the body of the page
 // append a 'group' element to 'svg'
@@ -77,7 +80,7 @@ var svg = d3.select("body").append("svg")
 	// add the x Axis
   svg.append("g")
       .attr("class", "axis")
-      .attr("transform", "translate(0," + height + ")") //;
+      .attr("transform", "translate(0," + height + ")")//;
       .call(x_axis);
 
 	// add the y Axis
@@ -158,7 +161,9 @@ function update(year) {
               	.html((d.month) + "<br>" + "€ " + (d.value) + " miljard");
         })
     		.on("mouseout", function(d){ tooltip.style("display", "none");});			      
-				      			      
+        
+	var x_axis = d3.svg.axis().scale(x).orient("bottom");
+        var y_axis = d3.svg.axis().scale(y).orient("left");				      			      
 
         svg.select('.x.axis')
             //.transition(t)
