@@ -57,7 +57,9 @@ var x = d3.scaleBand()
           .padding(0.1);
 var y = d3.scaleLinear()
           .range([height, 0]);
-		
+
+var y_axis = d3.axisLeft(y);
+var x_axis = d3.axisBottom(x);
 
 // append the svg object to the body of the page
 // append a 'group' element to 'svg'
@@ -73,16 +75,15 @@ var svg = d3.select("body").append("svg")
   svg.append("g")
       .attr("class", "axis")
       .attr("transform", "translate(0," + height + ")");
-      //.call(d3.axisBottom(x));
+      .call(x_axis);
 
 	// add the y Axis
   svg.append("g")
       .attr("class", "axis");
-      //.call(d3.axisLeft(y));		
+      .call(y_axis);		
 		
 
-var y_axis = d3.axisLeft(y);
-var x_axis = d3.axisBottom(x);
+
 
 
 var colour_scale = d3.scaleQuantile()
